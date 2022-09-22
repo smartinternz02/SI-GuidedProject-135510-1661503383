@@ -39,3 +39,7 @@ def predict():
         text = 'The visitor is interested in buying products'
         return render_template('submit.html',prediction_text=text)
     
+
+    
+if__name__=="__main__":
+    app.run(debug=False)
