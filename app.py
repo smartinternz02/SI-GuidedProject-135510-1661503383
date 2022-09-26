@@ -4,10 +4,24 @@ import pickle
 
 model = pickle.load(open(r'C:\Users\Harsha CVN\model.pkl','rb'))
 app = Flask(__name__)
-@app.route("/home")
-def home():
+
+@app.route("/")
+def about():
     return render_template('home.html')
-@app.route("/pred",method=['POST'])
+
+@app.route("/about")
+def home():
+    return render_template('about.html')
+
+@app.route("/predict")
+def home1():
+    return render_template('predict.html')
+
+@app.route("/Submit")
+def home2():
+    return render_template('Submit.html')
+
+@app.route("/pred", methods=['POST'])
 def predict():
     Administrative = request.form['Administrative']
     Administrative_Duration = request.form['Administrative_Duration']
@@ -37,9 +51,9 @@ def predict():
         text = 'The visitor is not interested in buying products.'
     else:
         text = 'The visitor is interested in buying products'
-        return render_template('submit.html',prediction_text=text)
+    return render_template('submit.html', prediction_text=text)
     
-
     
-if__name__=="__main__":
+if __name__=="__main__":
     app.run(debug=False)
+
