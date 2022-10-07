@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import numpy as np
 import pickle
 
-model = pickle.load(open(r'C:\Users\Harsha CVN\model.pkl','rb'))
+model = pickle.load(open(r'C:\Users\Harsha CVN\OneDrive\Desktop\Online\flask\model.pkl','rb'))
 app = Flask(__name__)
 
 @app.route("/")
@@ -17,11 +17,11 @@ def home():
 def home1():
     return render_template('predict.html')
 
-@app.route("/Submit")
+@app.route("/submit")
 def home2():
-    return render_template('Submit.html')
+    return render_template('submit.html')
 
-@app.route("/pred", methods=['POST'])
+@app.route("/pred", methods=['POST','GET'])
 def predict():
     Administrative = request.form['Administrative']
     Administrative_Duration = request.form['Administrative_Duration']
@@ -31,7 +31,7 @@ def predict():
     ProductRelated_Duration = request.form['ProductRelated_Duration']
     BounceRates = request.form['BounceRates']
     ExitRates = request.form['ExitRates']
-    PageValues = request.form['PageValues'] 
+    PageValues = request.form['PageValues']
     SpecialDay = request.form['SpecialDay']
     Month = request.form['Month']
     OperatingSystems = request.form['OperatingSystems']
@@ -57,3 +57,4 @@ def predict():
 if __name__=="__main__":
     app.run(debug=False)
 
+    
